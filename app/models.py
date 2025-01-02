@@ -127,6 +127,19 @@ class Location(BaseModel):
 	isCountry: bool
 	countryCode: Optional[str]
 
+class PlayerHouseElementType(str, Enum):
+	ground = "Ground"
+	walls = "Walls"
+	roof = "Roof"
+	decoration = "Decoration"
+
+class PlayerHouseElement(BaseModel):
+	type: PlayerHouseElementType
+	id: int
+
+
+class PlayerHouse(BaseModel):
+	elements: List[PlayerHouseElement]
 
 class ClanCapitalRankingClan(BaseClan):
 	location: Location
@@ -148,3 +161,46 @@ class ClanMember(BasePlayer):
 	donationsReveived: int
 	trophies: int
 	playerHouse: PlayerHouse
+
+
+class ClanTypeEnum(str, Enum):
+	closed = "closed"
+	inviteOnly = 'inviteOnly'
+	open = 'open'
+
+
+class Language(BaseModel):
+	id: int
+	name: str
+	languageCode: str
+
+
+class ClanSearch(BaseClan):
+	"""Representing the response item of a clan search. In case `isWarLogPublic` is false, the attribute `warTies` and `warLosses` are missing"""
+	type: ClanTypeEnum
+	location: Location
+	isFamilyFriendly: bool
+	clanPoints: int
+	clanBuilderBasePoints: int
+	clanCapitalPoints: int
+	capitalLeague: Optional[BaseLeague]
+	requiredTrophies: int
+	requiredBuilderBaseTrophies: int
+	requiredTownhallLevel: int
+	warFrequency: str # TODO: Add enum
+	warWinStreak: int
+	warWins: int
+	isWarLogPublic: bool
+	warTies: Optional[int]
+	warLosses: Optional[int]
+	warLeague: BaseLeague
+	members: int
+	labels: list[Label]
+	chatLanguage: Optional[Language]
+
+class SearchClansBody:
+	items: list[ClanSearch]
+
+class SearchClans(BaseModel):
+	body: SearchClansBody
+

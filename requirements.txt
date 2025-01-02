@@ -2,4 +2,5 @@ fastapi
 python-jose
 pydantic
 jwt
+uvicorn
 passlib
