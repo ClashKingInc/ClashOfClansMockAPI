@@ -5,11 +5,7 @@ from typing import List, Optional, Dict, Tuple, Union
 from pydantic import BaseModel, Field
 
 
-class ClientError(Exception):
-	def __init__(self, reason, message, status):
-		self.reason: str = reason
-		self.message: str = message
-		self.status: int = status
+
 
 
 class IconUrls(BaseModel):
@@ -203,4 +199,8 @@ class SearchClansBody:
 
 class SearchClans(BaseModel):
 	body: SearchClansBody
+
+	class Config:
+		arbitrary_types_allowed = True
+
 

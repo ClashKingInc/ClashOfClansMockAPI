@@ -1,6 +1,6 @@
 import asyncio
 from typing import Annotated
-
+import uvicorn
 from fastapi import Depends, FastAPI, Request
 from fastapi.responses import JSONResponse
 from app.models import *
@@ -23,12 +23,12 @@ openapi_tags = [{"name": "clans",
 
 app = FastAPI(openapi_tags=openapi_tags,
               arbitrary_types_allowed=True,
-              dependencies=[Depends(JWTBearer())],
+              #dependencies=[Depends(JWTBearer())],
               title="Clash of Clans example API",
               summary="A Community project maintained by the Clash of Clans API Developer community to provide access "
                       "to all possible api responses at every time.",
               description="This project is not affiliated with with Supercell or Clash of Clans. It is a community "
-                          "maintained tool to provide new developers and easy way to test their code. Responsible for "
+                          "maintained tool to provide new developers an easy way to test their code. Responsible for "
                           "this is project are the administrators of the Clash of Clans API Developer discord server.\n"
                           "This API should mimic the original Clash of Clans API, but improve the developer experience "
                           "by extending the given API documentation with helpful information and better model hierarchy"
@@ -51,3 +51,6 @@ async def unicorn_exception_handler(request: Request, exc: ClientError):
         status_code=exc.status,
         content={"message": exc.message, "reason": exc.reason},
     )
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="localhost", port=8000)
