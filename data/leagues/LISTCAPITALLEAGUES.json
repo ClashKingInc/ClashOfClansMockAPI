@@ -1,0 +1,106 @@
+{
+  "body": {
+  "items": [
+    {
+      "id": 85000000,
+      "name": "Unranked"
+    },
+    {
+      "id": 85000001,
+      "name": "Bronze League III"
+    },
+    {
+      "id": 85000002,
+      "name": "Bronze League II"
+    },
+    {
+      "id": 85000003,
+      "name": "Bronze League I"
+    },
+    {
+      "id": 85000004,
+      "name": "Silver League III"
+    },
+    {
+      "id": 85000005,
+      "name": "Silver League II"
+    },
+    {
+      "id": 85000006,
+      "name": "Silver League I"
+    },
+    {
+      "id": 85000007,
+      "name": "Gold League III"
+    },
+    {
+      "id": 85000008,
+      "name": "Gold League II"
+    },
+    {
+      "id": 85000009,
+      "name": "Gold League I"
+    },
+    {
+      "id": 85000010,
+      "name": "Crystal League III"
+    },
+    {
+      "id": 85000011,
+      "name": "Crystal League II"
+    },
+    {
+      "id": 85000012,
+      "name": "Crystal League I"
+    },
+    {
+      "id": 85000013,
+      "name": "Master League III"
+    },
+    {
+      "id": 85000014,
+      "name": "Master League II"
+    },
+    {
+      "id": 85000015,
+      "name": "Master League I"
+    },
+    {
+      "id": 85000016,
+      "name": "Champion League III"
+    },
+    {
+      "id": 85000017,
+      "name": "Champion League II"
+    },
+    {
+      "id": 85000018,
+      "name": "Champion League I"
+    },
+    {
+      "id": 85000019,
+      "name": "Titan League III"
+    },
+    {
+      "id": 85000020,
+      "name": "Titan League II"
+    },
+    {
+      "id": 85000021,
+      "name": "Titan League I"
+    },
+    {
+      "id": 85000022,
+      "name": "Legend League"
+    }
+  ],
+  "paging": {
+    "cursors": {}
+  }
+},
+  "headers": {
+    "cache-control": "max-age=600",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "response_code": 200
+}

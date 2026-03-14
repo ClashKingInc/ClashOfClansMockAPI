@@ -1,6 +1,5 @@
-
 class ClientError(Exception):
-	def __init__(self, reason, message, status):
-		self.reason: str = reason
-		self.message: str = message
-		self.status: int = status
+    def __init__(self, reason: str, message: str, status: int):
+        self.reason = reason
+        self.message = message
+        self.status = status

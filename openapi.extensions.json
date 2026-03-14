@@ -1,0 +1,22 @@
+{
+  "x-scalar-sdk-installation": [
+    {
+      "lang": "Python",
+      "description": "Install the Python SDK:",
+      "source": "pip install clashy.py"
+    }
+  ],
+  "paths": {
+    "/players/{playerTag}": {
+      "get": {
+        "x-codeSamples": [
+          {
+            "lang": "Python",
+            "label": "clashy.py",
+            "source": "player = await coc_client.get_player(\"#2PP\")\nprint(player.name)"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "body": {
+    "reason": "notImplemented",
+    "message": "Mock fixture data is not available for this endpoint yet."
+  },
+  "headers": {
+    "cache-control": "no-store",
+    "content-type": "application/json"
+  },
+  "response_code": 501
+}

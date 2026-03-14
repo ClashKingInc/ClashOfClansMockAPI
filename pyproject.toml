@@ -1,0 +1,13 @@
+[project]
+name = "mockapi"
+version = "0.1.0"
+description = "Clash of Clans mock API with Scalar docs"
+requires-python = ">=3.13.7"
+dependencies = [
+  "fastapi",
+  "pydantic",
+  "uvicorn",
+]
+
+[tool.uv]
+package = false

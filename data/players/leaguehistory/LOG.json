@@ -1,0 +1,63 @@
+{
+  "body": {
+  "items": [
+    {
+      "leagueSeasonId": 1770613200,
+      "leagueTrophies": 1174,
+      "leagueTierId": 105000030,
+      "placement": 11,
+      "attackWins": 24,
+      "attackLosses": 0,
+      "attackStars": 0,
+      "defenseWins": 0,
+      "defenseLosses": 21,
+      "defenseStars": 42,
+      "maxBattles": 24
+    },
+    {
+      "leagueSeasonId": 1771218000,
+      "leagueTrophies": 859,
+      "leagueTierId": 105000031,
+      "placement": 67,
+      "attackWins": 15,
+      "attackLosses": 0,
+      "attackStars": 0,
+      "defenseWins": 0,
+      "defenseLosses": 22,
+      "defenseStars": 44,
+      "maxBattles": 30
+    },
+    {
+      "leagueSeasonId": 1771822800,
+      "leagueTrophies": 1107,
+      "leagueTierId": 105000031,
+      "placement": 9,
+      "attackWins": 24,
+      "attackLosses": 0,
+      "attackStars": 0,
+      "defenseWins": 0,
+      "defenseLosses": 21,
+      "defenseStars": 43,
+      "maxBattles": 24
+    },
+    {
+      "leagueSeasonId": 1772427600,
+      "leagueTrophies": 1079,
+      "leagueTierId": 105000032,
+      "placement": 13,
+      "attackWins": 24,
+      "attackLosses": 0,
+      "attackStars": 0,
+      "defenseWins": 0,
+      "defenseLosses": 21,
+      "defenseStars": 40,
+      "maxBattles": 24
+    }
+  ]
+},
+  "headers": {
+    "cache-control": "max-age=300",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "response_code": 200
+}

@@ -1,0 +1,90 @@
+{
+  "body": {
+  "items": [
+    {
+      "id": 48000000,
+      "name": "Unranked"
+    },
+    {
+      "id": 48000001,
+      "name": "Bronze League III"
+    },
+    {
+      "id": 48000002,
+      "name": "Bronze League II"
+    },
+    {
+      "id": 48000003,
+      "name": "Bronze League I"
+    },
+    {
+      "id": 48000004,
+      "name": "Silver League III"
+    },
+    {
+      "id": 48000005,
+      "name": "Silver League II"
+    },
+    {
+      "id": 48000006,
+      "name": "Silver League I"
+    },
+    {
+      "id": 48000007,
+      "name": "Gold League III"
+    },
+    {
+      "id": 48000008,
+      "name": "Gold League II"
+    },
+    {
+      "id": 48000009,
+      "name": "Gold League I"
+    },
+    {
+      "id": 48000010,
+      "name": "Crystal League III"
+    },
+    {
+      "id": 48000011,
+      "name": "Crystal League II"
+    },
+    {
+      "id": 48000012,
+      "name": "Crystal League I"
+    },
+    {
+      "id": 48000013,
+      "name": "Master League III"
+    },
+    {
+      "id": 48000014,
+      "name": "Master League II"
+    },
+    {
+      "id": 48000015,
+      "name": "Master League I"
+    },
+    {
+      "id": 48000016,
+      "name": "Champion League III"
+    },
+    {
+      "id": 48000017,
+      "name": "Champion League II"
+    },
+    {
+      "id": 48000018,
+      "name": "Champion League I"
+    }
+  ],
+  "paging": {
+    "cursors": {}
+  }
+},
+  "headers": {
+    "cache-control": "max-age=600",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "response_code": 200
+}
