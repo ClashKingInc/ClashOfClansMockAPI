@@ -172,4 +172,4 @@ async def unicorn_exception_handler(request: Request, exc: ClientError):
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run("main:app", host="localhost", port=8000)
+    uvicorn.run("main:app", host="localhost", port=3000)
