@@ -139,7 +139,7 @@ def respond_from_fixture(
     after: str | None = None,
     before: str | None = None,
 ) -> JSONResponse:
-    wrapped = copy.deepcopy(_read_wrapped_fixture(relative_path))
+    wrapped = copy.deepcopy(read_wrapped_fixture(relative_path))
     body = wrapped.get("body")
     headers = wrapped.get("headers", {})
     status_code = wrapped.get("response_code", 200)
