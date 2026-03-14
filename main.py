@@ -156,7 +156,7 @@ app.include_router(api_router)
 app.openapi = build_openapi_schema
 
 
-@app.get("/docs", include_in_schema=False)
+@app.get("/", include_in_schema=False)
 async def scalar_docs() -> HTMLResponse:
     return HTMLResponse(scalar_docs_html(openapi_url=app.openapi_url, title=f"{app.title} - Scalar"))
 
