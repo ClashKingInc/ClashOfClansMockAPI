@@ -21,7 +21,7 @@ openapi_tags = [
 ROOT = Path(__file__).resolve().parent
 CUSTOM_DOCS_PATH = ROOT / "openapi.extensions.json"
 EXCLUDED_PATHS = {"/leagues", "/leagues/{leagueId}"}
-MOCK_PROXY_URL = os.getenv("MOCK_PROXY_URL", "http://localhost:8000")
+MOCK_PROXY_URL = os.getenv("MOCK_PROXY_URL", "http://localhost:3000")
 
 app = FastAPI(
     openapi_tags=openapi_tags,

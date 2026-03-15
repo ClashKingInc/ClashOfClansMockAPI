@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Path, Query
 
 from app.models import (
     CapitalRaidSeasonsResponse,
@@ -24,7 +24,7 @@ router = APIRouter()
 
 
 @router.get("/clans/{clanTag}/currentwar/leaguegroup", tags=["clans"], response_model=ClanWarLeagueGroup, responses=STANDARD_ERROR_RESPONSES)
-async def get_clan_war_league_group(clanTag: str):
+async def get_clan_war_league_group(clanTag: str = Path(..., example="#2PP")):
     normalized_tag, error = validate_tag(clanTag)
     if error:
         return error
@@ -35,7 +35,7 @@ async def get_clan_war_league_group(clanTag: str):
 
 
 @router.get("/clanwarleagues/wars/{warTag}", tags=["clans"], response_model=ClanWar, responses=STANDARD_ERROR_RESPONSES)
-async def get_clan_war_league_war(warTag: str):
+async def get_clan_war_league_war(warTag: str = Path(..., example="#2PP")):
     normalized_tag, error = validate_tag(warTag)
     if error:
         return error
@@ -46,7 +46,7 @@ async def get_clan_war_league_war(warTag: str):
 
 
 @router.get("/clans/{clanTag}/warlog", tags=["clans"], response_model=ClanWarLogResponse, responses=STANDARD_ERROR_RESPONSES)
-async def get_clan_war_log(clanTag: str, limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
+async def get_clan_war_log(clanTag: str = Path(..., example="#2PP"), limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
     paging_error = validate_paging(after, before)
     if paging_error:
         return paging_error
@@ -80,7 +80,7 @@ async def search_clans(
 
 
 @router.get("/clans/{clanTag}/currentwar", tags=["clans"], response_model=ClanWar, responses=STANDARD_ERROR_RESPONSES)
-async def get_current_war(clanTag: str):
+async def get_current_war(clanTag: str = Path(..., example="#2PP")):
     normalized_tag, error = validate_tag(clanTag)
     if error:
         return error
@@ -91,7 +91,7 @@ async def get_current_war(clanTag: str):
 
 
 @router.get("/clans/{clanTag}", tags=["clans"], response_model=Clan, responses=STANDARD_ERROR_RESPONSES)
-async def get_clan(clanTag: str):
+async def get_clan(clanTag: str = Path(..., example="#2PP")):
     normalized_tag, error = validate_tag(clanTag)
     if error:
         return error
@@ -101,7 +101,7 @@ async def get_clan(clanTag: str):
 
 
 @router.get("/clans/{clanTag}/members", tags=["clans"], response_model=ClanMembersResponse, responses=STANDARD_ERROR_RESPONSES)
-async def get_clan_members(clanTag: str, limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
+async def get_clan_members(clanTag: str = Path(..., example="#2PP"), limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
     paging_error = validate_paging(after, before)
     if paging_error:
         return paging_error
@@ -114,7 +114,7 @@ async def get_clan_members(clanTag: str, limit: int | None = Query(default=None,
 
 
 @router.get("/clans/{clanTag}/capitalraidseasons", tags=["clans"], response_model=CapitalRaidSeasonsResponse, responses=STANDARD_ERROR_RESPONSES)
-async def get_capital_raid_seasons(clanTag: str, limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
+async def get_capital_raid_seasons(clanTag: str = Path(..., example="#2PP"), limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
     paging_error = validate_paging(after, before)
     if paging_error:
         return paging_error

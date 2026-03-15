@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Path, Query
 
 from app.models import (
     ClanBuilderBaseRankingListResponse,
@@ -16,7 +16,7 @@ router = APIRouter()
 
 
 @router.get("/locations/{locationId}/rankings/clans", tags=["locations"], response_model=ClanRankingListResponse, responses=STANDARD_ERROR_RESPONSES)
-async def get_clan_ranking(locationId: str, limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
+async def get_clan_ranking(locationId: str = Path(..., example="32000249"), limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
     paging_error = validate_paging(after, before)
     if paging_error:
         return paging_error
@@ -24,7 +24,7 @@ async def get_clan_ranking(locationId: str, limit: int | None = Query(default=No
 
 
 @router.get("/locations/{locationId}/rankings/players", tags=["locations"], response_model=PlayerRankingListResponse, responses=STANDARD_ERROR_RESPONSES)
-async def get_player_ranking(locationId: str, limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
+async def get_player_ranking(locationId: str = Path(..., example="32000249"), limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
     paging_error = validate_paging(after, before)
     if paging_error:
         return paging_error
@@ -32,7 +32,7 @@ async def get_player_ranking(locationId: str, limit: int | None = Query(default=
 
 
 @router.get("/locations/{locationId}/rankings/players-builder-base", tags=["locations"], response_model=PlayerBuilderBaseRankingListResponse, responses=STANDARD_ERROR_RESPONSES)
-async def get_player_builder_base_ranking(locationId: str, limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
+async def get_player_builder_base_ranking(locationId: str = Path(..., example="32000249"), limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
     paging_error = validate_paging(after, before)
     if paging_error:
         return paging_error
@@ -40,7 +40,7 @@ async def get_player_builder_base_ranking(locationId: str, limit: int | None = Q
 
 
 @router.get("/locations/{locationId}/rankings/clans-builder-base", tags=["locations"], response_model=ClanBuilderBaseRankingListResponse, responses=STANDARD_ERROR_RESPONSES)
-async def get_clan_builder_base_ranking(locationId: str, limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
+async def get_clan_builder_base_ranking(locationId: str = Path(..., example="32000249"), limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
     paging_error = validate_paging(after, before)
     if paging_error:
         return paging_error
@@ -56,7 +56,7 @@ async def get_locations(limit: int | None = Query(default=None, ge=1), after: st
 
 
 @router.get("/locations/{locationId}/rankings/capitals", tags=["locations"], response_model=ClanCapitalRankingListResponse, responses=STANDARD_ERROR_RESPONSES)
-async def get_clan_capital_ranking(locationId: str, limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
+async def get_clan_capital_ranking(locationId: str = Path(..., example="32000249"), limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
     paging_error = validate_paging(after, before)
     if paging_error:
         return paging_error
@@ -64,5 +64,5 @@ async def get_clan_capital_ranking(locationId: str, limit: int | None = Query(de
 
 
 @router.get("/locations/{locationId}", tags=["locations"], response_model=Location, responses=STANDARD_ERROR_RESPONSES)
-async def get_location(locationId: str):
+async def get_location(locationId: str = Path(..., example="32000249")):
     return respond_item_from_list_fixture("locations/LISTLOCATIONS.json", locationId, "locations/location/BADREQUEST.json")

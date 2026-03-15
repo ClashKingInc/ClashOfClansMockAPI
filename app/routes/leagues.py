@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Path, Query
 
 from app.models import (
     BuilderBaseLeague,
@@ -34,7 +34,7 @@ router = APIRouter()
 
 
 @router.get("/leaguetiers/{leagueTierId}", tags=["leagues"], response_model=LeagueTier, responses=STANDARD_ERROR_RESPONSES)
-async def get_league_tier(leagueTierId: str):
+async def get_league_tier(leagueTierId: str = Path(..., example="105000034")):
     return respond_item_from_list_fixture("leagues/LISTLEAGUETIERS.json", leagueTierId, "leagues/leaguetier/BADREQUEST.json")
 
 
@@ -64,8 +64,8 @@ async def get_leagues(limit: int | None = Query(default=None, ge=1), after: str 
 
 @router.get("/leagues/{leagueId}/seasons/{seasonId}", tags=["leagues"], response_model=PlayerRankingListResponse, responses=STANDARD_ERROR_RESPONSES)
 async def get_league_season_rankings(
-    leagueId: str,
-    seasonId: str,
+    leagueId: str = Path(..., example="29000022"),
+    seasonId: str = Path(..., example="2026-02-23"),
     limit: int | None = Query(default=None, ge=1),
     after: str | None = None,
     before: str | None = None,
@@ -83,12 +83,12 @@ async def get_league_season_rankings(
 
 
 @router.get("/capitalleagues/{leagueId}", tags=["leagues"], response_model=CapitalLeague, responses=STANDARD_ERROR_RESPONSES)
-async def get_capital_league(leagueId: str):
+async def get_capital_league(leagueId: str = Path(..., example="85000022")):
     return respond_item_from_list_fixture("leagues/LISTCAPITALLEAGUES.json", leagueId, "leagues/capital-league/BADREQUEST.json")
 
 
 @router.get("/builderbaseleagues/{leagueId}", tags=["leagues"], response_model=BuilderBaseLeague, responses=STANDARD_ERROR_RESPONSES)
-async def get_builder_base_league(leagueId: str):
+async def get_builder_base_league(leagueId: str = Path(..., example="44000041")):
     return respond_item_from_list_fixture("leagues/LISTBUILDERLEAGUES.json", leagueId, "leagues/builderbaseleague/BADREQUEST.json")
 
 
@@ -101,12 +101,16 @@ async def get_builder_base_leagues(limit: int | None = Query(default=None, ge=1)
 
 
 @router.get("/leagues/{leagueId}", tags=["leagues"])
-async def get_league(leagueId: str):
+async def get_league(leagueId: str = Path(..., example="29000022")):
     return missing_mock_response()
 
 
 @router.get("/leaguegroup/{leagueGroupTag}/{leagueSeasonId}", tags=["leagues"], response_model=LeagueGroup, responses=STANDARD_ERROR_RESPONSES)
-async def get_league_group(leagueGroupTag: str, leagueSeasonId: str, playerTag: str):
+async def get_league_group(
+    leagueGroupTag: str = Path(..., example="#2YYCYCC"),
+    leagueSeasonId: str = Path(..., example="1773032400"),
+    playerTag: str = Query(..., example="#2PP"),
+):
     normalized_player_tag, error = validate_tag(playerTag)
     if error:
         return error
@@ -128,7 +132,7 @@ async def get_league_group(leagueGroupTag: str, leagueSeasonId: str, playerTag: 
 
 
 @router.get("/leagues/{leagueId}/seasons", tags=["leagues"], response_model=LeagueSeasonListResponse, responses=STANDARD_ERROR_RESPONSES)
-async def get_league_seasons(leagueId: str, limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
+async def get_league_seasons(leagueId: str = Path(..., example="29000022"), limit: int | None = Query(default=None, ge=1), after: str | None = None, before: str | None = None):
     paging_error = validate_paging(after, before)
     if paging_error:
         return paging_error
@@ -138,7 +142,7 @@ async def get_league_seasons(leagueId: str, limit: int | None = Query(default=No
 
 
 @router.get("/warleagues/{leagueId}", tags=["leagues"], response_model=WarLeague, responses=STANDARD_ERROR_RESPONSES)
-async def get_war_league(leagueId: str):
+async def get_war_league(leagueId: str = Path(..., example="48000018")):
     return respond_item_from_list_fixture("leagues/LISTWARELEAGUES.json", leagueId, "leagues/war-league/BADREQUEST.json")
 
 

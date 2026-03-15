@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Body
+from fastapi import APIRouter, Body, Path
 
 from app.models import BattleLogResponse, LeagueHistoryResponse, Player, VerifyTokenRequest, VerifyTokenResponse
 from app.routes.common import (
@@ -15,7 +15,7 @@ router = APIRouter()
 
 
 @router.get("/players/{playerTag}", tags=["players"], response_model=Player, responses=STANDARD_ERROR_RESPONSES)
-async def get_player(playerTag: str):
+async def get_player(playerTag: str = Path(..., example="#2PP")):
     normalized_tag, error = validate_tag(playerTag)
     if error:
         return error
@@ -26,7 +26,7 @@ async def get_player(playerTag: str):
 
 
 @router.get("/players/{playerTag}/battlelog", tags=["players"], response_model=BattleLogResponse, responses=STANDARD_ERROR_RESPONSES)
-async def get_battle_log(playerTag: str):
+async def get_battle_log(playerTag: str = Path(..., example="#2PP")):
     normalized_tag, error = validate_tag(playerTag)
     if error:
         return error
@@ -36,7 +36,10 @@ async def get_battle_log(playerTag: str):
 
 
 @router.post("/players/{playerTag}/verifytoken", tags=["players"], response_model=VerifyTokenResponse, responses=STANDARD_ERROR_RESPONSES)
-async def verify_token(playerTag: str, body: VerifyTokenRequest = Body(...)):
+async def verify_token(
+    playerTag: str = Path(..., example="#2PP"),
+    body: VerifyTokenRequest = Body(..., example={"token": "TOKEN"}),
+):
     normalized_tag, error = validate_tag(playerTag)
     if error:
         return error
@@ -51,7 +54,7 @@ async def verify_token(playerTag: str, body: VerifyTokenRequest = Body(...)):
 
 
 @router.get("/players/{playerTag}/leaguehistory", tags=["players"], response_model=LeagueHistoryResponse, responses=STANDARD_ERROR_RESPONSES)
-async def get_league_history(playerTag: str):
+async def get_league_history(playerTag: str = Path(..., example="#2PP")):
     normalized_tag, error = validate_tag(playerTag)
     if error:
         return error
